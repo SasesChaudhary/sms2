@@ -1,0 +1,23 @@
+register(6/6/2023)
+Backend
+1. https://www.youtube.com/watch?v=ZG0e-esjMAk&t=2305s
+    (Madu Web Tech)
+2. https://www.youtube.com/watch?v=qEm2bZZdMsE&t=1805s
+    (Thapa Technical)
+Frontend
+1. https://www.youtube.com/watch?v=9XKRNfPrNpM&t=184s
+    (Coding lab)
+
+
+
+Login and logout system(6/7/2023)
+1. https://www.youtube.com/watch?v=E5LWaJ9Cydo&t=1391s
+    (Madu Web Tech)
+2. https://www.youtube.com/watch?v=F65zrW7Jbus
+    (Thapa Technical)
+
+
+Dashboard (6/8/2023)
+Frontend
+1. https://www.youtube.com/watch?v=m3aC6t_9RK8&t=300s    
+
