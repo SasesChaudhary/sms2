@@ -34,3 +34,10 @@ Frontend
       //   <?php
       // }
 ?>
+
+
+window.open("location","_self");
+
+
+           $filename1 = $filename.date('sidmY').".".$img_type;//adds date in the picture
+      $filename2 = preg_replace('/\s+/','',$filename1);//removes white spaces

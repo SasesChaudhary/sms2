@@ -15,17 +15,15 @@
       $imagename = $_FILES['image']['name'];
       $tmpname = $_FILES['image']['tmp_name'];
       $img_type = strtolower(pathinfo($imagename,PATHINFO_EXTENSION));//gets extension of the image
-      $filename = strtolower(pathinfo($imagename,PATHINFO_FILENAME));//gets imagename
-      $filedate = $filename.date('sidmY').".".$img_type;//adds date in the picture
-      $filechange = preg_replace('/\s+/','',$filedate);//removes white spaces
+      $destination = "./images/".$imagename;//Saves image
       $allow_type= array('png','jpeg','jpg');//restriction of png jpeg and jpg
       $imagesize = $_FILES['image']['size'];//file size
-      $destination = "./images/".$filechange;//changes image name
+
 
       //image validation
       if(in_array($img_type, $allow_type)){//checks image extension
         if($imagesize <= 2000000){//checks image size
-          move_uploaded_file($tmpname, $destination);//moves the image to project image
+          move_uploaded_file($tmpname, $destination);//moves the image to project image folder
             $insertquery = "INSERT INTO product(product_name, product_bought, product_sold, product_stock, product_image) VALUES('{$name}','{$bought}','{$sold}','{$stock}','$imagename')";
             $query = mysqli_query($con,$insertquery);
         }
@@ -44,7 +42,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+	<link rel="stylesheet" href="assets/css/style.css">
 	<title>Stationery Management System</title>
 </head>
 <body>
@@ -73,7 +71,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
           <div class="row">
             <label for="">Product Name</label>
-            <input type="text" name="name">
+            <input type="text" name="name" required>
           </div>
           <div class="row">
           <label for="">Product Image</label>
@@ -81,15 +79,15 @@
           </div>
           <div class="row">
           <label for="">Product Bought</label>
-            <input type="number" name="bought">
+            <input type="number" name="bought" required>
           </div>
           <div class="row">
           <label for="">Product Sold</label>
-            <input type="number" name="sold">
+            <input type="number" name="sold" required>
           </div>
           <div class="row">
           <label for="">Stock</label>
-            <input type="number" name="stock">
+            <input type="number" name="stock" required>
           </div>
           <div class="row button">
             <input type="submit" value="Add Product" name="add">

@@ -5,13 +5,13 @@
         header('location:login.php');
     }
 ?>
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="assets/css/style.css">
-	<link rel="stylesheet" href="assets/css/add.css">
 	<title>Stationery Management System</title>
 </head>
 <body>
@@ -38,7 +38,11 @@
     <div class="content">
         <div class="table">
             <section class="table_body">
-                <table>
+                <table border="1px solid black">
+                    <?php
+                        include 'includes/connection.php';
+
+                    ?>
                     <thead>
                         <tr>
                             <th>Product Name</th>
@@ -46,19 +50,35 @@
                             <th>Sold</th>
                             <th>Stock</th>
                             <th>Image</th>
-                            <th>Action</th>
+                            <th colspan="2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Dom's Pencil</td>
-                            <td>Pencil</td>
-                            <td>Active</td>
-                            <td>5</td>
-                            <td><img src="assets/images/pencil1.jpg" alt=""></td>
-                            <td>5</td>
-                        </tr>
-                        </tr>
+                        <?php
+                            $query = "SELECT * FROM product";
+                            $result = mysqli_query($con,$query);
+                            
+                            while($row= mysqli_fetch_array($result)){
+                                $id = $row['product_id'];
+                                $name = $row['product_name'];
+                                $bought = $row['product_bought'];
+                                $sold = $row['product_sold'];
+                                $stock = $row['product_stock'];
+                                $image = $row['product_image'];
+                        
+                            ?>
+                            <tr>
+                                <td><?php  echo $name?></td>
+                                <td><?php  echo $bought ?></td>
+                                <td><?php  echo $sold ?></td>
+                                <td><?php  echo $stock ?></td>
+                                <td><img src="<?php echo "images/".$row['product_image']; ?>" alt="image"></td>
+                                <td><a href="./updateproduct.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:30px;"></i></a></td>
+                                <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteproduct.php?id=<?php echo $id; ?>"><i class='bx bxs-message-square-x' style="font-size:30px;"></i></a></td>
+                            </tr>
+                    <?php
+                    }
+                    ?>
                     </tbody>
                 </table>
             </section>
