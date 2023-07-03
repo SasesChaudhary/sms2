@@ -52,12 +52,12 @@
     <!-- SIDEBAR -->
 	<section id="sidebar"> 
 		<?php 
-			// if($_SESSION['user_type'] == 1){
-			// 	include 'layouts/user_menu.php';
-			// }
-			// else{
-			// 	include 'layouts/admin_menu.php';
-			// }
+			if($_SESSION['user_type'] == 1){
+				include 'layouts/user_menu.php';
+			}
+			else{
+				include 'layouts/admin_menu.php';
+			}
 		?>
 
   <!-- Main Content -->
