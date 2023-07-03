@@ -50,7 +50,7 @@ include 'includes/connection.php';
         // $cpass = password_hash($cpassword, PASSWORD_BCRYPT);
 
         //insert into database
-        $insertquery = "INSERT INTO users (username, email, password, cpassword, user_type) VALUES('{$username}','{$email}','{$password}','{$c_password}','{$type}')";
+        $insertquery = "INSERT INTO users (username, email, password, cpassword, user_type) VALUES('{$username}','{$email}','{$password}','{$cpassword}','{$type}')";
         $iquery = mysqli_query($con,$insertquery);
         if($iquery){
           header('location:login.php');

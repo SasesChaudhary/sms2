@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <?php
 include 'includes/connection.php';
@@ -40,7 +41,7 @@ if(isset($_POST['login'])){
 <body>
 <div class="container">
       <div class="form-container">
-        <div class="title"><span>Login Form</span></div>
+        <div class="title"><span>Login</span></div>
         <form action="" method="POST">
         <p>
                 <?php

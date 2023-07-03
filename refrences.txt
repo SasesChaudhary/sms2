@@ -21,3 +21,16 @@ Dashboard (6/8/2023)
 Frontend
 1. https://www.youtube.com/watch?v=m3aC6t_9RK8&t=300s    
 
+
+
+
+
+<?php
+      // $select = "SELECT * FROM product";
+      // $q = mysqli_query($con, $select);
+      // while($fetch=mysqli_fetch_array(($q))){
+      //   ?>
+      //   <img src="images/<?php echo $fetch['product_image']; ?>" width="100px">
+      //   <?php
+      // }
+?>
