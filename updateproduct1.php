@@ -81,33 +81,34 @@
     </ul>
   <div class="add-form">
       <div class="form-container">
-        <form action="" method="POST" enctype="multipart/form-data">
-        <ul class="form-style">
-                <li>
-                    <label>Product Name</label>
-                    <input type="text" name="name" class="field" value="<?php echo $name ;?>">
-                </li>
-                <li>
-                    <label>Image</label>
-                    <img src="<?php echo "images/".$image; ?>"  height="70px" width="70px">
-                    <input type="file" name="image" class="field-img">
-                </li>
-                <li>
-                    <label>Purchase </label>
-                    <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>"></li>
-                <li>
-                    <label>Sold </label>
-                    <input type="number" name="sold" class="field" value="<?php  echo $sold; ?>">
-                </li>
-                <li>
-                    <label>Stock</label>
-                    <input type="number" name="stock" class="field" value="<?php  echo $stock; ?>">
-                </li>
-                <li>
-                    <input type="submit" value="Update" name="update">
-                </li>
-            </ul>
-        </form>
+      <form action="" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <label for="">Product Name</label>
+              <input type="text" name="name" value="<?php echo $name ;?>">
+            </div>
+            <div class="row">
+            <label for="">Product Image</label>
+            <img src="<?php echo "images/".$image; ?>"  height="70px" width="70px">
+              <input type="file"  name="image" value="<?php   ?>">
+            </div>
+            <div class="row">
+            <label for="">Purchase</label>
+              <input type="number" name="bought" value="<?php  echo $bought; ?>">
+            </div>
+            <div class="row">
+            <label for="">Product Sold</label>
+              <input type="number" name="sold" value="<?php  echo $sold; ?>">
+            </div>
+            <div class="row">
+            <label for="">Stock</label>
+            <input type="number" name="stock" value="">
+            </div>
+            <div class="row button">
+              <input type="submit" value="Update" name="update">
+            </div>
+          </form>
+        </div>
+      </div>
   </main>
   <!-- Main Content -->
 

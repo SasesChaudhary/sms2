@@ -43,7 +43,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="assets/css/style.css">
-	<link rel="stylesheet" href="assets/css/add.css">
 	<title>Stationery Management System</title>
 </head>
 <body>
@@ -70,30 +69,29 @@
     <div class="add-form">
         <div class="form-container">
         <form action="" method="POST" enctype="multipart/form-data">
-            <ul class="form-style">
-                <li>
-                    <label>Product Name</label>
-                    <input type="text" name="name" class="field">
-                </li>
-                <li>
-                    <label>Image</label>
-                    <input type="file" name="image" class="field-long">
-                </li>
-                <li>
-                    <label>Purchase </label>
-                    <input type="number" name="bought" class="field"></li>
-                <li>
-                    <label>Sold </label>
-                    <input type="number" name="sold" class="field">
-                </li>
-                <li>
-                    <label>Stock</label>
-                    <input type="number" name="stock" class="field">
-                </li>
-                <li>
-                    <input type="submit" value="Add" name="add">
-                </li>
-            </ul>
+          <div class="row">
+            <label for="">Product Name</label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="row">
+          <label for="">Product Image</label>
+            <input type="file"  name="image">
+          </div>
+          <div class="row">
+          <label for="">Product Bought</label>
+            <input type="number" name="bought" required>
+          </div>
+          <div class="row">
+          <label for="">Product Sold</label>
+            <input type="number" name="sold" required>
+          </div>
+          <div class="row">
+          <label for="">Stock</label>
+            <input type="number" name="stock" required>
+          </div>
+          <div class="row button">
+            <input type="submit" value="Add Product" name="add">
+          </div>
         </form>
       </div>
     </div>

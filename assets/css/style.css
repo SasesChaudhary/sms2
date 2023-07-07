@@ -275,9 +275,9 @@ main .content{
 	width: 100%;
 	min-height: 70vh;
 	margin-top: 10px;
-	display: flex;
+	/* display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 }
 main .table{
 	width: 100%;

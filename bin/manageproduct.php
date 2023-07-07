@@ -12,6 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/table.css">
 	<title>Stationery Management System</title>
 </head>
 <body>
@@ -35,20 +36,18 @@
         <li class="divider">/</li>
         <li><a href="product.php" class="active">Product</a></li>
     </ul>
-    <div class="content">
-        <div class="table">
-            <section class="table_body">
-                <table>
-                    <?php
+    <div class="table-body">
+    <table class="styled-table">
+    <?php
                         include 'includes/connection.php';
 
                     ?>
                     <thead>
                         <tr>
                             <th>Product Name</th>
-                            <th>Bought</th>
-                            <th>Sold</th>
-                            <th>Stock</th>
+                            <th>Purchase</th>
+                            <th>Sales</th>
+                            <th>In Stock</th>
                             <th>Image</th>
                             <th colspan="2">Action</th>
                         </tr>
@@ -67,21 +66,21 @@
                                 $image = $row['product_image'];
                         
                             ?>
-                            <tr>
+                            <tr class="active-row">
                                 <td><?php  echo $name?></td>
                                 <td><?php  echo $bought ?></td>
                                 <td><?php  echo $sold ?></td>
                                 <td><?php  echo $stock ?></td>
-                                <td><img src="<?php echo "images/".$row['product_image']; ?>" alt="image" width="100px" height="100px"></td>
-                                <td><a href="./updateproduct.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:25px;color:green;"></i></a></td>
-                                <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteproduct.php?id=<?php echo $id; ?>"><i class='bx bxs-message-square-x' style="font-size:25px;color:red;"></i></a></td>
+                                <td><img src="<?php echo "images/".$row['product_image']; ?>" alt="image" width="50px" height="50px"></td>
+                                <td><a href="./updateproduct.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:30px;"></i></a></td>
+                                <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteproduct.php?id=<?php echo $id; ?>"><i class='bx bxs-message-square-x' style="font-size:30px;"></i></a></td>
                             </tr>
                     <?php
                     }
                     ?>
-                    </tbody>
-                </table>
-            </section>
+    </table>
+    </div>
+</section>
         </div>
     </div>
 </main>
@@ -93,4 +92,4 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="assets\js\dashboard.js"></script>
 </body>
-</html>    
+</html>   
