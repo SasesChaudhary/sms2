@@ -3,18 +3,18 @@
 		<ul class="side-menu">
 			<li><a href="index.php" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li>
-				<a href="product.php"><i class='bx bxs-user-circle icon' ></i> User Management <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
+				<a href="usermanagement.php"><i class='bx bxs-user-circle icon' ></i> User Management </a>
+				<!-- <ul class="side-dropdown">
 					<li><a href="#">Admin</a></li>
 					<li><a href="#">Customer</a></li>
-				</ul>
+				</ul> -->
 			</li>
 			<li>
-				<a href="product.php"><i class='bx bxs-doughnut-chart icon' ></i> Product <i class='bx bx-chevron-right icon-right' ></i></a>
-                <ul class="side-dropdown">
+				<a href="manageproduct.php"><i class='bx bxs-doughnut-chart icon' ></i> Product</a>
+                <!-- <ul class="side-dropdown">
 					<li><a href="manageproduct.php">Manage Product</a></li>
 					<li><a href="addproduct.php">Add Product</a></li>
-				</ul>
+				</ul> -->
 			</li>
 			<li>
 				<a href="#"><i class='bx bxs-chart icon' ></i> Sales <i class='bx bx-chevron-right icon-right' ></i></a>

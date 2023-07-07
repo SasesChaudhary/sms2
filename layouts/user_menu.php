@@ -3,7 +3,7 @@
 		<ul class="side-menu">
 			<li><a href="index.php" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li>
-				<a href="product.php"><i class='bx bxs-doughnut-chart icon' ></i> Product</a>
+				<a href="userproduct.php"><i class='bx bxs-doughnut-chart icon' ></i> Product</a>
 			</li>
 			<!-- <li>
 				<a href="#"><i class='bx bxs-chart icon' ></i> Sales <i class='bx bx-chevron-right icon-right' ></i></a>

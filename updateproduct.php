@@ -108,6 +108,8 @@
                 </li>
             </ul>
         </form>
+      </div>
+  </div>
   </main>
   <!-- Main Content -->
 
