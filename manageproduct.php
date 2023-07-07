@@ -150,49 +150,7 @@
                                 <td><?php  echo $sold ?></td>
                                 <td><?php  echo $stock ?></td>
                                 <td><img src="<?php echo "images/".$row['product_image']; ?>" alt="image" width="100px" height="100px"></td>
-                                <!-- <td><a href="./updateproduct.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:25px;color:green;"></i></a></td> -->
-                                <td><section class="modal">
-            <button class="modal__button" id="open-modal" style="color: white;">
-            <i class='bx bx-edit' style="font-size:25px;color:green;"></i>
-            </button>
-
-            <div class="modal__container" id="modal-container">
-                <div class="modal__content">
-                    <div class="modal__close close-modal" title="Close">
-                        <i class='bx bx-x'></i>
-                    </div>
-                    <div class="add-form">
-      <div class="form-container">
-        <form action="" method="POST" enctype="multipart/form-data">
-        <ul class="form-style">
-                <li>
-                    <label>Product Name</label>
-                    <input type="text" name="name" class="field" value="<?php echo $name ;?>">
-                </li>
-                <li>
-                    <label>Image</label>
-                    <img src="<?php echo "images/".$image; ?>"  height="70px" width="70px">
-                    <input type="file" name="image" class="field-img">
-                </li>
-                <li>
-                    <label>Purchase </label>
-                    <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>"></li>
-                <li>
-                    <label>Sold </label>
-                    <input type="number" name="sold" class="field" value="<?php  echo $sold; ?>">
-                </li>
-                <li>
-                    <label>Stock</label>
-                    <input type="number" name="stock" class="field" value="<?php  echo $stock; ?>">
-                </li>
-                <li>
-                    <input type="submit" value="Update" name="update">
-                </li>
-            </ul>
-        </form>
-      </div>
-  </div>
-        </section></td>
+                                <td><a href="./updateproduct.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:25px;color:green;"></i></a></td>
                                 <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteproduct.php?id=<?php echo $id; ?>"><i class='bx bxs-message-square-x' style="font-size:25px;color:red;"></i></a></td>
                             </tr>
                     <?php

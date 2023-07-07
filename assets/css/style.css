@@ -323,7 +323,7 @@ main .table{
 	transition: all .3s;
 	visibility: hidden;
 	opacity: 0;
-	z-index: var(--z-modal);
+	/* z-index: var(--z-modal); */
 
 }
 .modal__content{

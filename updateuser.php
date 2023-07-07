@@ -20,31 +20,19 @@
     $data=mysqli_query($con,$select);
 
     while($row= mysqli_fetch_array($data)){
-        $id = $row['product_id'];
-        $name = $row['product_name'];
-        $bought = $row['product_bought'];
-        $sold = $row['product_sold'];
-        $stock = $row['product_stock'];
-        $image = $row['product_image'];
-
+        $id = $row['user_id'];
+        $username = $row['username'];
+        $password = $row['password'];
+        $cpassword = $row['cpassword'];
     }
 
     if(isset($_POST['update'])){
-        $name = $_POST['name'];
-        $bought = $_POST['bought'];
-        $sold = $_POST['sold'];
-        $stock = $_POST['stock'];
+        $name = $_POST['username'];
+        $password = $_POST['password'];
+        $cpasswor = $_POST['cpasswor'];
   
-        $imagename = $_FILES['image']['name'];
-        $tmpname = $_FILES['image']['tmp_name'];
-        $img_type = strtolower(pathinfo($imagename,PATHINFO_EXTENSION));//gets extension of the image
-        $destination = "./images/".$imagename;//Saves image
-        $allow_type= array('png','jpeg','jpg');//restriction of png jpeg and jpg
-        $imagesize = $_FILES['image']['size'];//file size
-  
-  
-        //image validation
-        if(in_array($img_type, $allow_type)){//checks image extension
+       
+        if()){//checks image extension
           if($imagesize <= 2000000){//checks image size
             move_uploaded_file($tmpname, $destination);//moves the image to project image folder
             $update = "UPDATE product SET product_name='{$name}', product_bought='{$bought}', product_sold='{$sold}', product_stock='{$stock}', product_image='$imagename' WHERE product_id='{$id}' ";

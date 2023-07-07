@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2023 at 01:02 PM
+-- Generation Time: Jul 07, 2023 at 09:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `sms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_bought` int(255) NOT NULL,
+  `product_sold` int(255) NOT NULL,
+  `product_stock` int(255) NOT NULL,
+  `product_image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `product_bought`, `product_sold`, `product_stock`, `product_image`) VALUES
+(20, 'lol', 12, 12, 12, '166776781_2996601143907118_8288533372222205457_n.jpg'),
+(21, 'Eraser', 12, 13, 14, '166776781_2996601143907118_8288533372222205457_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -49,6 +72,12 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `cpassword`, `u
 --
 
 --
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -59,10 +88,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
