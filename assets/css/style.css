@@ -19,6 +19,15 @@
 	--light-blue: #D0E4FF;
 	--dark-blue: #0C5FCD;
 	--red: #FC3B56;
+
+	/* modal */
+	--hue: 240;
+	--first-color: hsl(var(--hue), 16%, 18%);
+	--title-color: hsl(var(--hue), 8%, 15%);
+	--text-color: hsl(var(--hue), 8%, 35%);
+	--body-color: hsl(var(--hue), 100%, 99%);
+	--container-color: #FFF;
+	--z-modal: 1000;
 }
 body {
 	background: var(--grey);
@@ -273,31 +282,101 @@ main .breadcrumbs li.divider {
 /* Product */
 main .content{
 	width: 100%;
-	min-height: 70vh;
+	height: 100%;
 	margin-top: 10px;
-	/* display: flex;
-	justify-content: center;
-	align-items: center; */
+	background-color: #fff5;
+	box-shadow: 0 .4rem .8rem #0005;
+	border-radius: .8rem;
 }
 main .table{
 	width: 100%;
 	height: 70vh;
-	background-color: #fff5;
+	overflow: hidden;
+}
+
+
+
+
+.modal{
+	margin: 15px;
+}
+  
+.modal__button{
+	display: inline-block;
+	font-weight: 400;
+	color: #FFF;
+	background-color: #4070f4;
+	margin: .8rem auto;
+	padding: 1rem 1.25rem;
+	border: none;
+	border-radius: 6px;
+}
+.modal__container{
+	position: absolute;
+	top: 0;
+	left: 10%;
+	width: 80%;
+	height: 100%;
+	display: grid;
+	align-items: flex-end;
+	overflow: hidden;
+	transition: all .3s;
+	visibility: hidden;
+	opacity: 0;
+	z-index: var(--z-modal);
+
+}
+.modal__content{
+	position: relative;
+	text-align: center;
+	padding: 3rem 2rem 2rem;
+	transition: all .3s;
+	transform: translateY(10%);
+	background-color: var(--dark-grey);
 	box-shadow: 0 .4rem .8rem #0005;
 	border-radius: .8rem;
-	overflow: hidden;
+}
+  
+.modal__close{
+	display: inline-flex;
+	background-color: #fff5;
+	border-radius: .25rem;
+	color: black;
+	font-size: 1.5rem;
+	position: absolute;
+	top: 1rem;	
+	right: 2rem;
+	cursor: pointer;
+}
+  /* Show modal */
+.show-modal{
+	visibility: visible;
+	opacity: 1;
+}
+.show-modal .modal__content{
+	transform: translateY(0);
+}
+/* .overlay{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	opacity: 0;
+	pointer-events: none;
+} */
+
+/* Table */
+main .content .table_header{
+	width: 100%;
+	height: 10%;
+	background-color: #fff4;
+	padding: .8rem 1rem;
 }
 .table td img{
 	width: 36px;
 	height: 36px;
 	margin-right: 8px;
 	vertical-align: middle;
-}
-main .content .table_header{
-	width: 100%;
-	height: 10%;
-	background-color: #fff4;
-	padding: .8rem 1rem;
 }
 main .content .table_body{
 	width: 95%;
@@ -325,11 +404,7 @@ thead th{
 tbody tr:nth-child(even){
 	background-color: #0000000b;
 }
-/* tbody tr:hover{
-	background-color: rgba(189, 189, 189, 0.4);
-} */
 /* Product */
-
 
 
 @media screen and (max-width: 768px) {
