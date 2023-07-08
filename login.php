@@ -62,6 +62,7 @@ if(isset($_POST['login'])){
           <div class="row button">
             <input type="submit" value="Login" name="login">
           </div>
+          <div class="signup-link">Forgot Password? <a href="forgotpassword.php">Click Here</a></div>
           <div class="signup-link">Don't have an account? <a href="register.php">Register now</a></div>
         </form>
       </div>

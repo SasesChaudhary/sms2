@@ -28,11 +28,11 @@
             $query = mysqli_query($con,$insertquery);
         }
         else{
-          echo "Size exceded";
+          $error="Size exceded";
         }
       }
       else{
-        echo "file type Not allowed";
+        $error="file type Not allowed";
       }
 
     }
@@ -70,8 +70,9 @@
     <div class="add-form">
         <div class="form-container">
           <form action="" method="POST" enctype="multipart/form-data">
-          <div class="title">Add Product
-          </div>
+            <div class="title">Add Product
+              </div>
+              <p style="color: red;text-align:center;"> <?php if(isset($error)){ echo $error; }?></p>
             <ul class="form-style">
                 <li>
                     <label>Product Name</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2023 at 09:41 PM
+-- Generation Time: Jul 08, 2023 at 06:39 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -41,8 +41,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_bought`, `product_sold`, `product_stock`, `product_image`) VALUES
-(20, 'lol', 12, 12, 12, '166776781_2996601143907118_8288533372222205457_n.jpg'),
-(21, 'Eraser', 12, 13, 14, '166776781_2996601143907118_8288533372222205457_n.jpg');
+(25, 'Pencil', 14, 14, 14, '166776781_2996601143907118_8288533372222205457_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -56,16 +55,19 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `cpassword` varchar(255) NOT NULL,
-  `user_type` int(11) NOT NULL
+  `user_type` int(11) NOT NULL,
+  `reset_token_hash` varchar(64) DEFAULT NULL,
+  `reset_token_expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `cpassword`, `user_type`) VALUES
-(1, 'admin', 'admin@admin.admin', 'admin1', 'admin1', 2),
-(2, 'User', 'user@user.user', 'user12', 'user12', 1);
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `cpassword`, `user_type`, `reset_token_hash`, `reset_token_expires_at`) VALUES
+(1, 'admin', 'admin@admin.admin', 'admin1', 'admin1', 2, NULL, NULL),
+(2, 'User', 'user@user.user', 'user12', 'user12', 1, NULL, NULL),
+(19, 'Niraj', 'chaudharyniraj034@gmail.com', 'Niraj1', 'Niraj1', 2, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -81,7 +83,8 @@ ALTER TABLE `product`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -91,13 +94,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
