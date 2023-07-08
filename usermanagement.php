@@ -82,7 +82,7 @@
                             <th>UserName</th>
                             <th>Email</th>
                             <th>User Type</th>
-                            <th colspan="2">Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,7 +104,7 @@
                                             }
                                             else{echo "Admin";} 
                                 ?></td>
-                                <td><a href="./update.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:25px;color:green;"></i></a></td>
+                                <!-- <td><a href="./update.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:25px;color:green;"></i></a></td> -->
                                 <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteuser.php?id=<?php echo $id; ?>"><i class='bx bxs-message-square-x' style="font-size:25px;color:red;"></i></a></td>
                             </tr>
                     <?php

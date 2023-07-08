@@ -72,46 +72,8 @@
     <div class="content">
     <section class="modal">
             <button class="modal__button" id="open-modal">
-                Add Product
+                <a href="addproduct.php"> Add Product </a>
             </button>
-
-            <div class="modal__container" id="modal-container">
-                <div class="modal__content">
-                    <div class="modal__close close-modal" title="Close">
-                        <i class='bx bx-x'></i>
-                    </div>
-                    <div class="add-form">
-                        <div class="form-container">
-                        <div class="title">Add Product</div>
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            <div class="row">
-                                <label for="">Product Name</label>
-                                <input type="text" name="name" required>
-                            </div>
-                            <div class="row">
-                            <label for="">Product Image</label>
-                                <input type="file"  name="image">
-                            </div>
-                            <div class="row">
-                            <label for="">Purchase</label>
-                                <input type="number" name="bought" required>
-                            </div>
-                            <div class="row">
-                            <label for="">Sales</label>
-                                <input type="number" name="sold" required>
-                            </div>
-                            <div class="row">
-                            <label for="">Stock</label>
-                                <input type="number" name="stock" required>
-                            </div>
-                            <div class="row button">
-                                <input type="submit" value="Add" name="add">
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
         <div class="table">
             <section class="table_body">
