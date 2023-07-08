@@ -294,18 +294,21 @@ main .table{
 	overflow: hidden;
 }
 .modal{
-	margin: 15px;
+	margin: 0 10px 0 10px;
 }
-  
 .modal__button{
 	display: inline-block;
 	font-weight: 400;
 	color: #FFF;
 	background-color: #4070f4;
 	margin-top: .8rem;
-	padding: 1rem 1.25rem;
+	padding: 0.75rem 1rem;
 	border: none;
 	border-radius: 6px;
+}
+.modal__button a{
+	text-decoration: none;
+	color: white;
 }
 /* Table */
 main .content .table_header{

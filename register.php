@@ -94,10 +94,12 @@ if (isset($_POST['submit'])) {
         <div class="row">
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Password" name="password" value="<?php if(isset($error)){ echo $password; }?>">
+          <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
         </div>
         <div class="row">
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php if(isset($error)){ echo $cpassword; } ?>">
+          <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
         </div>
         <div class="row">  
           <select name="user_type" class="select">

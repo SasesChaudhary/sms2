@@ -71,7 +71,7 @@
     </ul>
     <div class="content">
     <section class="modal">
-            <button class="modal__button" id="open-modal">
+            <button class="modal__button">
                 <a href="addproduct.php"> Add Product </a>
             </button>
         </section>

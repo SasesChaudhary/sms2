@@ -69,7 +69,9 @@
     </ul>
     <div class="add-form">
         <div class="form-container">
-        <form action="" method="POST" enctype="multipart/form-data">
+          <form action="" method="POST" enctype="multipart/form-data">
+          <div class="title">Add Product
+          </div>
             <ul class="form-style">
                 <li>
                     <label>Product Name</label>

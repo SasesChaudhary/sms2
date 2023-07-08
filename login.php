@@ -57,6 +57,7 @@ if(isset($_POST['login'])){
           <div class="row">
             <i class="fas fa-lock"></i>
             <input type="password" placeholder="Password" name="password">
+            <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
           </div>
           <div class="row button">
             <input type="submit" value="Login" name="login">
