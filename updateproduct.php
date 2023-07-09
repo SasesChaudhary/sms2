@@ -53,11 +53,11 @@
             header('location:manageproduct.php');
           }
           else{
-            echo "Size exceded";
+            $error="Size exceded";
           }
         }
         else{
-          echo "file type Not allowed";
+          $error="file type Not allowed";
         }
       }
 ?>
@@ -83,6 +83,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
         <div class="title">Update Product
           </div>
+          <p style="color: red;text-align:center;"> <?php if(isset($error)){ echo $error; }?></p>
         <ul class="form-style">
                 <li>
                     <label>Product Name</label>
