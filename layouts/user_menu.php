@@ -24,7 +24,6 @@
 			<li><a href="#"><i class='bx bxs-cog icon' ></i> Settings </a></li>
 			<li><a href="logout.php"><i class='bx bxs-log-out-circle icon' ></i> Logout </a></li>
 		</ul>
-
 	</section>
 	<!-- SIDEBAR -->
     <!-- NAVBAR -->

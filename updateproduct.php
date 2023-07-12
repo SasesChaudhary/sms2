@@ -20,13 +20,12 @@
     $data=mysqli_query($con,$select);
 
     while($row= mysqli_fetch_array($data)){
-        $id = $row['product_id'];
-        $name = $row['product_name'];
-        $bought = $row['product_bought'];
-        $sold = $row['product_sold'];
-        $stock = $row['product_stock'];
-        $image = $row['product_image'];
-
+      $id = $row['product_id'];
+      $name = $row['product_name'];
+      $bought = $row['product_bought'];
+      $sold = $row['product_sold'];
+      $stock = $row['product_stock'];
+      $image = $row['product_image'];
     }
 
     if(isset($_POST['update'])){
@@ -84,31 +83,31 @@
         <div class="title">Update Product
           </div>
           <p style="color: red;text-align:center;"> <?php if(isset($error)){ echo $error; }?></p>
-        <ul class="form-style">
-                <li>
-                    <label>Product Name</label>
-                    <input type="text" name="name" class="field" value="<?php echo $name ;?>">
-                </li>
-                <li>
-                    <label>Image</label>
-                    <img src="<?php echo "images/".$image; ?>"  height="70px" width="70px">
-                    <input type="file" name="image" class="field-img">
-                </li>
-                <li>
-                    <label>Purchase </label>
-                    <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>"></li>
-                <li>
-                    <label>Sold </label>
-                    <input type="number" name="sold" class="field" value="<?php  echo $sold; ?>">
-                </li>
-                <li>
-                    <label>Stock</label>
-                    <input type="number" name="stock" class="field" value="<?php  echo $stock; ?>">
-                </li>
-                <li>
-                    <input type="submit" value="Update" name="update">
-                </li>
-            </ul>
+            <ul class="form-style">
+              <li>
+                  <label>Product Name</label>
+                  <input type="text" name="name" class="field" value="<?php echo $name ;?>">
+              </li>
+              <li>
+                  <label>Image</label>
+                  <img src="<?php echo "images/".$image; ?>"  height="70px" width="70px">
+                  <input type="file" name="image" class="field-img">
+              </li>
+              <li>
+                  <label>Purchase </label>
+                  <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>"></li>
+              <li>
+                  <label>Sold </label>
+                  <input type="number" name="sold" class="field" value="<?php  echo $sold; ?>">
+              </li>
+              <li>
+                  <label>Stock</label>
+                  <input type="number" name="stock" class="field" value="<?php  echo $stock; ?>">
+              </li>
+              <li>
+                  <input type="submit" value="Update" name="update">
+              </li>
+          </ul>
         </form>
       </div>
   </div>

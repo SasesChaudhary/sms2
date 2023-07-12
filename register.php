@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <?php
+session_start();
+if(isset($_SESSION['username'])){
+  header('location:logout.php');
+}
 require_once "./includes/connection.php";
 if (isset($_POST['submit'])) {
   $username = mysqli_real_escape_string($con, $_POST['username']);
   $email = mysqli_real_escape_string($con, $_POST['email']);
   $password = mysqli_real_escape_string($con, $_POST['password']);
   $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
-  $type = mysqli_real_escape_string($con, $_POST['user_type']);
-  
+  $type = 1;
+  $verify_token = md5(rand());
+
   //Validation
   $pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";  
   $uppercase = preg_match('@[A-Z]@', $password);
@@ -18,7 +23,7 @@ if (isset($_POST['submit'])) {
     $error= 'Username must be at least 4 characters';
   }
   elseif(!preg_match("/^[a-zA-Z]*$/",$username)){
-    $error = "Only letters and white space allowed";
+    $error = "Only letters with no white space are allowed in username";
   }
   // Email
   elseif(empty($email)){
@@ -32,15 +37,11 @@ if (isset($_POST['submit'])) {
     $error= 'Password must be at least 5 characters';
   }
   elseif(!$uppercase || !$lowercase || !$number ) {
-    $error = "Must contain at least one number & one uppercase & lowercase letter";
+    $error = " Password must contain at least one number & one uppercase & lowercase letter";
   }
   //Confirm password
   elseif($cpassword != $password){
     $error ="Password doesnot match";
-  }
-  //User-type
-  elseif($type == 3){
-    $error = "Please select user type";
   }
   else{
     $emailquery = "SELECT * FROM users WHERE email = '{$email}'";
@@ -50,12 +51,14 @@ if (isset($_POST['submit'])) {
 
     if($emailcount > 0){
       $error = "Email already exist";
+      header('location:register.php');
+
     }
     else{
 
       //password encryption
-      // $password = password_hash($password, PASSWORD_BCRYPT);
-      // $cpassword = password_hash($cpassword, PASSWORD_BCRYPT);
+      // $password = md5($password);
+      // $cpassword = md5($cpassword);
 
       //insert into database
       $insertquery = "INSERT INTO users (username, email, password, cpassword, user_type) VALUES('{$username}','{$email}','{$password}','{$cpassword}','{$type}')";
@@ -63,15 +66,16 @@ if (isset($_POST['submit'])) {
       if($iquery){
         header('location:login.php');
       }
+      else{
+        header('location:register.php');
+
+      }
     }
   }
   }
 ?>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/form.css">
@@ -100,13 +104,6 @@ if (isset($_POST['submit'])) {
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php if(isset($error)){ echo $cpassword; } ?>">
           <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
-        </div>
-        <div class="row">  
-          <select name="user_type" class="select">
-            <option value="3">Select User Type</option>
-            <option value="1">User</option>
-            <option value="2">Admin</option>
-          </select>
         </div>
           <div class="row button">
             <input type="submit" value="Register" name="submit">

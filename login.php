@@ -1,13 +1,20 @@
 
 <!DOCTYPE html>
 <?php
+
+session_start();
+if(isset($_SESSION['loggedIn'])){
+  header('location:logout.php');
+}
 include 'includes/connection.php';
 if(isset($_POST['login'])){
   $email = $_POST['email'];
-  $pass = $_POST['password'];
+  $password = $_POST['password'];
+
+  // $password = md5($password);
 
   //checking of emial and password in database
-  $check = "SELECT * FROM users WHERE email = '$email' && password='$pass'";
+  $check = "SELECT * FROM users WHERE email = '$email' && password='$password'";
   $query = mysqli_query($con,$check);
   $row = mysqli_num_rows($query);
 
@@ -15,7 +22,6 @@ if(isset($_POST['login'])){
   if($row == 1){
     $username = $fetch['username'];
     $user_type = $fetch['user_type'];
-    session_start();
 
     $_SESSION['username'] = $username;
     $_SESSION['user_type'] = $user_type;

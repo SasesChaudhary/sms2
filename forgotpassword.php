@@ -1,25 +1,35 @@
-<!-- 
 <!DOCTYPE html>
 <?php
+
 session_start();
-if(isset($_POST['reset'])){
-    $email = $_POST["email"];
-    $token = bin2hex(random_bytes(16));
-    
-    $token_hash = hash("sha256", $token);
-    
-    $expiry = date("Y-m-d H:i:s", time() + 60 * 30);
+if(isset($_SESSION['username'])){
+  header('location:logout.php');
+}
+include 'includes/connection.php';
+if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+  
+    //checking of emial and password in database
+    $check = "SELECT * FROM users WHERE username='$username' && email = '$email' ";
+    $query = mysqli_query($con,$check);
+    $row = mysqli_num_rows($query);
+  
+    if($row == 1){
 
-    $sql = "UPDATE users SET reset_token_hash = ?, reset_token_expires_at = ? WHERE email = ?";
+        while($row= mysqli_fetch_array($query)){
+            $_SESSION['id'] = $row['user_id'];
+            $password = $row['password'];
+            $cpassword = $row['cpassword'];
 
-    $mysqli = include 'includes/connection.php';
-    
-    $stmt = $mysqli->prepare($sql);
-
-    $stmt->bind_param("sss", $token_hash, $expiry, $email);
-
-    $stmt->execute();
-  }
+        }
+      header('location:updatepassword.php');
+  
+    }
+    else{
+      $error = 'Please enter correct username and email';
+    }
+}
 ?>
 <html lang="en">
 <head>
@@ -33,8 +43,8 @@ if(isset($_POST['reset'])){
 <body>
 <div class="container">
       <div class="form-container">
-        <div class="title"><span>Reset Password</span></div>
-        <form action="forgotpassword.php" method="POST">
+        <div class="title"><span>Forgot Password</span></div>
+        <form action="" method="POST">
         <p>
                 <?php
                 if(isset($error)){
@@ -44,112 +54,18 @@ if(isset($_POST['reset'])){
             </p>
           <div class="row">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Enter Email Address" name="email">
+            <input type="text" placeholder="Username" name="username">
+          </div>
+          <div class="row">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+            <input type="text" placeholder="Email" name="email">
           </div>
           <div class="row button">
-            <input type="submit" value="Submit" name="reset">
+            <input type="submit" value="Submit" name="login" id="">
           </div>
           <div class="signup-link">Already have an account? <a href="login.php">Login now</a></div>
+        </form>
       </div>
     </div>
-</body>
-</html> -->
-
-
-
-
-<!DOCTYPE html>
-<?php
-session_start();
-if(isset($_POST['reset'])){
-    $email = $_POST["email"];
-    
-    // Chec email exists in database
-    $mysqli = include 'includes/connection.php';
-    $stmt = $mysqli->prepare("SELECT id FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows == 1) {
-        // Email exists, display the password reset 
-        ?>
-        <html lang="en">
-        <head>
-            <!-- Head content here -->
-        </head>
-        <body>
-        <div class="container">
-            <div class="form-container">
-                <div class="title"><span>Reset Password</span></div>
-                <form action="forgotpassword.php" method="POST">
-                    <input type="hidden" name="email" value="<?php echo $email; ?>">
-                    <div class="row">
-                        <i class="fas fa-key"></i>
-                        <input type="password" placeholder="Enter New Password" name="new_password">
-                    </div>
-                    <div class="row">
-                        <i class="fas fa-key"></i>
-                        <input type="password" placeholder="Confirm New Password" name="confirm_password">
-                    </div>
-                    <div class="row button">
-                        <input type="submit" value="Reset Password" name="submit">
-                    </div>
-                </form>
-            </div>
-        </div>
-        </body>
-        </html>
-        <?php
-    } else {
-        // Email does not exist in the database
-        echo "The provided email address does not exist.";
-    }
-} elseif (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $newPassword = $_POST['new_password'];
-    $confirmPassword = $_POST['confirm_password'];
-    
-    if ($newPassword !== $confirmPassword) {
-        echo "Passwords do not match.";
-        exit;
-    }
-    
-    // Update the password in the database
-    $mysqli = include 'includes/connection.php';
-    $stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE email = ?");
-    $stmt->bind_param("ss", $newPassword, $email);
-    $stmt->execute();
-    
-    echo "Password has been successfully reset.";
-}
-?>
-<html lang="en">
-<head>
-    <!-- Head content here -->
-</head>
-<body>
-<div class="container">
-    <div class="form-container">
-        <div class="title"><span>Reset Password</span></div>
-        <form action="forgotpassword.php" method="POST">
-            <p>
-                <?php
-                if(isset($error)){
-                    echo $error;
-                }
-                ?>
-            </p>
-            <div class="row">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter Email Address" name="email">
-            </div>
-            <div class="row button">
-                <input type="submit" value="Submit" name="reset">
-            </div>
-            <div class="signup-link">Already have an account? <a href="login.php">Login now</a></div>
-        </form>
-    </div>
-</div>
 </body>
 </html>

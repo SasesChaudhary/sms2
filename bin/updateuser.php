@@ -32,21 +32,21 @@
         $cpasswor = $_POST['cpasswor'];
   
        
-        if()){//checks image extension
-          if($imagesize <= 2000000){//checks image size
-            move_uploaded_file($tmpname, $destination);//moves the image to project image folder
-            $update = "UPDATE product SET product_name='{$name}', product_bought='{$bought}', product_sold='{$sold}', product_stock='{$stock}', product_image='$imagename' WHERE product_id='{$id}' ";
-            $query = mysqli_query($con,$update);
+    //     if(){//checks image extension
+    //       if($imagesize <= 2000000){//checks image size
+    //         move_uploaded_file($tmpname, $destination);//moves the image to project image folder
+    //         $update = "UPDATE product SET product_name='{$name}', product_bought='{$bought}', product_sold='{$sold}', product_stock='{$stock}', product_image='$imagename' WHERE product_id='{$id}' ";
+    //         $query = mysqli_query($con,$update);
 
-            header('location:manageproduct.php');
-          }
-          else{
-            echo "Size exceded";
-          }
-        }
-        else{
-          echo "file type Not allowed";
-        }
+    //         header('location:manageproduct.php');
+    //       }
+    //       else{
+    //         echo "Size exceded";
+    //       }
+    //     }
+    //     // else{
+    //     //   echo "file type Not allowed";
+    //     // }
       }
 ?>
     <!-- SIDEBAR -->
