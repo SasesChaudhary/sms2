@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2023 at 06:39 PM
+-- Generation Time: Jul 13, 2023 at 03:40 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,17 +31,19 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `product_bought` int(255) NOT NULL,
-  `product_sold` int(255) NOT NULL,
   `product_stock` int(255) NOT NULL,
-  `product_image` varchar(255) NOT NULL
+  `product_image` varchar(255) NOT NULL,
+  `product_add_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_name`, `product_bought`, `product_sold`, `product_stock`, `product_image`) VALUES
-(25, 'Pencil', 14, 14, 14, '166776781_2996601143907118_8288533372222205457_n.jpg');
+INSERT INTO `product` (`product_id`, `product_name`, `product_bought`, `product_stock`, `product_image`, `product_add_date`) VALUES
+(26, 'Sharpner', 1, 1, 'viber_image_2022-09-06_19-31-48-069.jpg', '2023-07-13'),
+(27, 'Eraser', 112, 12, 'h.png', '2023-07-13'),
+(30, 'Pencil', 12, 14, 'viber_image_2022-09-06_19-31-48-069.jpg', '2023-07-13');
 
 -- --------------------------------------------------------
 
@@ -55,19 +57,17 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `cpassword` varchar(255) NOT NULL,
-  `user_type` int(11) NOT NULL,
-  `reset_token_hash` varchar(64) DEFAULT NULL,
-  `reset_token_expires_at` datetime DEFAULT NULL
+  `user_type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `cpassword`, `user_type`, `reset_token_hash`, `reset_token_expires_at`) VALUES
-(1, 'admin', 'admin@admin.admin', 'admin1', 'admin1', 2, NULL, NULL),
-(2, 'User', 'user@user.user', 'user12', 'user12', 1, NULL, NULL),
-(19, 'Niraj', 'chaudharyniraj034@gmail.com', 'Niraj1', 'Niraj1', 2, NULL, NULL);
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `cpassword`, `user_type`) VALUES
+(1, 'admin', 'admin@admin.admin', 'admin1', 'admin1', 2),
+(2, 'User', 'user@user.user', 'user12', 'user12', 1),
+(22, 'Niraj', 'niraj@gmail.com', 'Ch@no1', 'Ch@no1', 1);
 
 --
 -- Indexes for dumped tables
@@ -83,8 +83,7 @@ ALTER TABLE `product`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -94,13 +93,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

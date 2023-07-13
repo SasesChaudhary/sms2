@@ -5,11 +5,10 @@
         header('location:login.php');
     }
 	include 'includes/connection.php';
+    $id = $_SESSION['user_id'];
 ?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/add.css">
@@ -27,7 +26,13 @@
             include 'layouts/admin_menu.php';
         }
     ?>
-
+    <?php
+        $select_user = mysqli_query($con, "SELECT * FROM users WHERE user_id='$id'");
+        if(mysqli_num_rows($select_user) > 0){
+            $fetch_user = mysqli_fetch_assoc($select_user);
+        }
+        // echo $id;
+    ?>
 <!-- Main Content -->
 <main >
     <h1 class="title">Product</h1>
@@ -40,38 +45,33 @@
         <div class="table">
             <section class="table_body">
                 <table>
-                    <?php
-                        include 'includes/connection.php';
-
-                    ?>
                     <thead>
                         <tr>
                             <th>Product Name</th>
-                            <th>Stock</th>
                             <th>Image</th>
+                            <th>Rate</th>
+                            <th>Quantity</th>
+                            <th>Order</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            $query = "SELECT * FROM product";
-                            $result = mysqli_query($con,$query);
-                            
-                            while($row= mysqli_fetch_array($result)){
-                                $id = $row['product_id'];
-                                $name = $row['product_name'];
-                                $bought = $row['product_bought'];
-                                $sold = $row['product_sold'];
-                                $stock = $row['product_stock'];
-                                $image = $row['product_image'];
-                        
-                            ?>
-                            <tr>
-                                <td><?php  echo $name?></td>
-                                <td><?php  echo $stock ?></td>
-                                <td><img src="<?php echo "images/".$row['product_image']; ?>" alt="image" width="100px" height="100px"></td>
-                            </tr>
                     <?php
-                    }
+                        $select_product = mysqli_query($con, "SELECT * FROM product");
+                        if(mysqli_num_rows($select_product) > 0){
+                           while( $fetch_product = mysqli_fetch_assoc($select_product)){
+                           
+                        ?>
+                         <tr>
+                            <td><?php  echo $fetch_product['product_name']?></td>
+                            <td><img src="<?php echo "images/".$fetch_product['product_image']; ?>" alt="image" width="100px" height="100px"></td>
+                            <td><?php  echo $fetch_product['product_bought'] ?></td>
+                            <td><?php  echo $fetch_product['product_stock'] ?></td>
+                            
+                        </tr>
+                        <?php
+                           }
+                        }
+                        
                     ?>
                     </tbody>
                 </table>

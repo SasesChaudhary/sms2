@@ -23,7 +23,6 @@
       $id = $row['product_id'];
       $name = $row['product_name'];
       $bought = $row['product_bought'];
-      $sold = $row['product_sold'];
       $stock = $row['product_stock'];
       $image = $row['product_image'];
     }
@@ -31,7 +30,6 @@
     if(isset($_POST['update'])){
         $name = $_POST['name'];
         $bought = $_POST['bought'];
-        $sold = $_POST['sold'];
         $stock = $_POST['stock'];
   
         $imagename = $_FILES['image']['name'];
@@ -46,7 +44,7 @@
         if(in_array($img_type, $allow_type)){//checks image extension
           if($imagesize <= 2000000){//checks image size
             move_uploaded_file($tmpname, $destination);//moves the image to project image folder
-            $update = "UPDATE product SET product_name='{$name}', product_bought='{$bought}', product_sold='{$sold}', product_stock='{$stock}', product_image='$imagename' WHERE product_id='{$id}' ";
+            $update = "UPDATE product SET product_name='{$name}', product_bought='{$bought}', product_stock='{$stock}', product_image='$imagename' WHERE product_id='{$id}' ";
             $query = mysqli_query($con,$update);
 
             header('location:manageproduct.php');
@@ -94,14 +92,12 @@
                   <input type="file" name="image" class="field-img">
               </li>
               <li>
-                  <label>Purchase </label>
-                  <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>"></li>
-              <li>
-                  <label>Sold </label>
-                  <input type="number" name="sold" class="field" value="<?php  echo $sold; ?>">
+                  <label>Rate </label>
+                  <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>">
               </li>
               <li>
-                  <label>Stock</label>
+              <li>
+                  <label>Quantity</label>
                   <input type="number" name="stock" class="field" value="<?php  echo $stock; ?>">
               </li>
               <li>

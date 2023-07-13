@@ -6,41 +6,38 @@
   }
 	include 'includes/connection.php';
 
-    if(isset($_POST['add'])){
-      $name = $_POST['name'];
-      $bought = $_POST['bought'];
-      $sold = $_POST['sold'];
-      $stock = $_POST['stock'];
+  if(isset($_POST['add'])){
+    $name = $_POST['name'];
+    $bought = $_POST['bought'];
+    $stock = $_POST['stock'];
 
-      $imagename = $_FILES['image']['name'];
-      $tmpname = $_FILES['image']['tmp_name'];
-      $img_type = strtolower(pathinfo($imagename,PATHINFO_EXTENSION));//gets extension of the image
-      $destination = "./images/".$imagename;//Saves image
-      $allow_type= array('png','jpeg','jpg');//restriction of png jpeg and jpg
-      $imagesize = $_FILES['image']['size'];//file size
+    $imagename = $_FILES['image']['name'];
+    $tmpname = $_FILES['image']['tmp_name'];
+    $img_type = strtolower(pathinfo($imagename,PATHINFO_EXTENSION));//gets extension of the image
+    $destination = "./images/".$imagename;//Saves image
+    $allow_type= array('png','jpeg','jpg');//restriction of png jpeg and jpg
+    $imagesize = $_FILES['image']['size'];//file size
 
 
-      //image validation
-      if(in_array($img_type, $allow_type)){//checks image extension
-        if($imagesize <= 2000000){//checks image size
-          move_uploaded_file($tmpname, $destination);//moves the image to project image folder
-            $insertquery = "INSERT INTO product(product_name, product_bought, product_sold, product_stock, product_image) VALUES('{$name}','{$bought}','{$sold}','{$stock}','$imagename')";
-            $query = mysqli_query($con,$insertquery);
-        }
-        else{
-          $error="Size exceded";
-        }
+    //image validation
+    if(in_array($img_type, $allow_type)){//checks image extension
+      if($imagesize <= 2000000){//checks image size
+        move_uploaded_file($tmpname, $destination);//moves the image to project image folder
+          $insertquery = "INSERT INTO product(product_name, product_bought, product_stock, product_image) VALUES('{$name}','{$bought}','{$stock}','$imagename')";
+          $query = mysqli_query($con,$insertquery);
       }
       else{
-        $error="file type Not allowed";
+        $error="Size exceded";
       }
-
     }
+    else{
+      $error="file type Not allowed";
+    }
+
+  }
 ?>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/add.css">
@@ -83,14 +80,11 @@
                     <input type="file" name="image" class="field-long">
                 </li>
                 <li>
-                    <label>Purchase </label>
-                    <input type="number" name="bought" class="field"></li>
-                <li>
-                    <label>Sold </label>
-                    <input type="number" name="sold" class="field">
+                    <label>Rate </label>
+                    <input type="number" name="bought" class="field">
                 </li>
                 <li>
-                    <label>Stock</label>
+                    <label>Quantity</label>
                     <input type="number" name="stock" class="field">
                 </li>
                 <li>

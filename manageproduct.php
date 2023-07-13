@@ -85,10 +85,11 @@
                     <thead>
                         <tr>
                             <th>Product Name</th>
-                            <th>Purchase</th>
-                            <th>Sales</th>
-                            <th>Stock</th>
                             <th>Image</th>
+                            <th>Rate (R.S) </th>
+                            <th>Quantity</th>
+                            <th>Product Added</th>
+                            <!-- <th>Stock</th> -->
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
@@ -101,17 +102,19 @@
                                 $id = $row['product_id'];
                                 $name = $row['product_name'];
                                 $bought = $row['product_bought'];
-                                $sold = $row['product_sold'];
+                                // $sold = $row['product_sold'];
                                 $stock = $row['product_stock'];
                                 $image = $row['product_image'];
+                                $time = $row['product_add_date'];
                         
                             ?>
                             <tr>
                                 <td><?php  echo $name?></td>
-                                <td><?php  echo $bought ?></td>
-                                <td><?php  echo $sold ?></td>
-                                <td><?php  echo $stock ?></td>
                                 <td><img src="<?php echo "images/".$row['product_image']; ?>" alt="image" width="100px" height="100px"></td>
+                                <td><?php  echo $bought ?></td>
+                                <!-- <td><?php  echo $sold ?></td> -->
+                                <td><?php  echo $stock ?></td>
+                                <td><?php  echo $time ?></td>
                                 <td><a href="./updateproduct.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:25px;color:green;"></i></a></td>
                                 <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteproduct.php?id=<?php echo $id; ?>"><i class='bx bxs-message-square-x' style="font-size:25px;color:red;"></i></a></td>
                             </tr>

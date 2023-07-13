@@ -1,30 +1,15 @@
 
 <a href="#" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
 		<ul class="side-menu">
-			<li><a href="index.php" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li><a href="admin_dashboard.php" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li>
 				<a href="usermanagement.php"><i class='bx bxs-user-circle icon' ></i> User Management </a>
-				<!-- <ul class="side-dropdown">
-					<li><a href="#">Admin</a></li>
-					<li><a href="#">Customer</a></li>
-				</ul> -->
 			</li>
 			<li>
 				<a href="manageproduct.php"><i class='bx bxs-doughnut-chart icon' ></i> Product</a>
-                <!-- <ul class="side-dropdown">
-					<li><a href="manageproduct.php">Manage Product</a></li>
-					<li><a href="addproduct.php">Add Product</a></li>
-				</ul> -->
 			</li>
 			<li>
-				<a href="#"><i class='bx bxs-chart icon' ></i> Sales <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a href="#">By Weeks</a></li>
-					<li><a href="#">By Days</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#"><i class='bx bxs-purchase-tag icon'></i> Purchase <i class='bx bx-chevron-right icon-right' ></i></a>
+				<a href="#"><i class='bx bxs-chart icon' ></i> Sales </a>
 			</li>
 			<li><a href="#"><i class='bx bx-table icon' ></i> Report </a></li>
 			<li class="divider"></li>
@@ -56,4 +41,5 @@
                 </ul>
             </div>
         </nav>
+		
     

@@ -22,9 +22,11 @@ if(isset($_POST['login'])){
   if($row == 1){
     $username = $fetch['username'];
     $user_type = $fetch['user_type'];
+    $id = $fetch['user_id'];
 
     $_SESSION['username'] = $username;
     $_SESSION['user_type'] = $user_type;
+    $_SESSION['user_id'] = $id;
 
     header('location:index.php');
 
