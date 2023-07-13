@@ -21,7 +21,7 @@
 				include 'layouts/user_menu.php';
 			}
 			else{
-				include 'layouts/admin_menu.php';
+				include 'admin_dashboard.php';
 			}
 		?>
 

@@ -66,7 +66,7 @@
                             <td><img src="<?php echo "images/".$fetch_product['product_image']; ?>" alt="image" width="100px" height="100px"></td>
                             <td><?php  echo $fetch_product['product_bought'] ?></td>
                             <td><?php  echo $fetch_product['product_stock'] ?></td>
-                            
+                            <td><a href=""></a></td>
                         </tr>
                         <?php
                            }

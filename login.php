@@ -27,8 +27,13 @@ if(isset($_POST['login'])){
     $_SESSION['username'] = $username;
     $_SESSION['user_type'] = $user_type;
     $_SESSION['user_id'] = $id;
-
-    header('location:index.php');
+    if($_SESSION['user_type'] == 1){
+      include 'layouts/user_menu.php';
+    }
+    else{
+      header('location:admin_dashboard.php');
+    }
+    // header('location:index.php');
 
   }
   else{
@@ -48,32 +53,47 @@ if(isset($_POST['login'])){
 </head>
 <body>
 <div class="container">
-      <div class="form-container">
-        <div class="title"><span>Login</span></div>
-        <form action="" method="POST">
-        <p>
-                <?php
-                if(isset($error)){
-                    echo $error;
-                }
-                ?>
-            </p>
-          <div class="row">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Email" name="email">
-          </div>
-          <div class="row">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" name="password">
-            <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
-          </div>
-          <div class="row button">
-            <input type="submit" value="Login" name="login">
-          </div>
-          <div class="signup-link">Forgot Password? <a href="forgotpassword.php">Click Here</a></div>
-          <div class="signup-link">Don't have an account? <a href="register.php">Register now</a></div>
-        </form>
+  <div class="form-container">
+    <div class="title"><span>Login</span></div>
+    <form action="" method="POST">
+      <p>
+        <?php
+        if(isset($error)){
+            echo $error;
+        }
+        ?>
+      </p>
+      <div class="row">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="Email" name="email">
       </div>
-    </div>
+      <div class="row">
+        <i class="fas fa-lock"></i>
+        <!-- <i class="fa fa-eye"  id="eye"   onclick="pass()"></i> -->
+        <input type="password" placeholder="Password" name="password" id="password">
+      </div>
+      <div class="row button">
+        <input type="submit" value="Login" name="login">
+      </div>
+      <div class="signup-link">Forgot Password? <a href="forgotpassword.php">Click Here</a></div>
+      <div class="signup-link">Don't have an account? <a href="register.php">Register now</a></div>
+    </form>
+  </div>
+</div>
+<!-- <script>
+  var a=true;
+  function pass(){
+    if(a){
+      document.getElementById('password').setAttribute("type'","password");
+      // document.getElementById('eye').style.color='black';
+      a=true;
+    }
+    else{
+      document.getElementById('password').setAttribute("type'","text");
+      document.getElementById('eye').style.color='blue';
+      a=false;
+    }
+  }
+</script> -->
 </body>
 </html>
