@@ -63,6 +63,12 @@ $id = $_SESSION['user_id'];
 						$check_sales = "SELECT * FROM purchase_list ";
 						$query_sales = mysqli_query($con,$check_sales);
 						$row_sales = mysqli_num_rows($query_sales);
+						$fetch_quantity = mysqli_fetch_assoc($query_sales);
+						$n=$row_sales;
+						$sales = 0;
+						for($a=1;$a<=$n;$a++){
+							$sales = $sales + $fetch_quantity['product_quantity'];
+						}
 					?>
 					<p><?php echo $row_product;?></p>
 				</div>
@@ -73,7 +79,7 @@ $id = $_SESSION['user_id'];
 			<div class="head">
 				<div>
 					<h2>Sales</h2>
-					<p><?php echo $row_sales;?></p>
+					<p><?php echo $sales;?></p>
 				</div>
 				<i class='bx bxs-chart icon' style="color:purple;"></i>
 			</div>

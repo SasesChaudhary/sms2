@@ -46,7 +46,7 @@
         <div class="table">
             <section class="table_body">
                 <table>
-                    <thead>
+                    <thead >
                         <tr>
                             <th>Product Name</th>
                             <th>Product Image</th>
