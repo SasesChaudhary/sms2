@@ -1,5 +1,5 @@
 
-<a href="#" class="brand"><i class='bx bxs-smile icon'></i> UserSite</a>
+<a href="user_dashboard.php" class="brand"><i class='bx bxs-smile icon'></i> UserSite</a>
 		<ul class="side-menu">
 			<li><a href="index.php" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li>

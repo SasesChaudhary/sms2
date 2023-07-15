@@ -95,7 +95,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $query = "SELECT * FROM product";
+                            $query = "SELECT * FROM product ORDER BY product_id DESC";
                             $result = mysqli_query($con,$query);
                             
                             while($row= mysqli_fetch_array($result)){

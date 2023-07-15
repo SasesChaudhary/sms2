@@ -57,7 +57,7 @@
                     </thead>
                     <tbody>
                     <?php
-                        $select_product = mysqli_query($con, "SELECT * FROM purchase_list WHERE user_id='$id'");
+                        $select_product = mysqli_query($con, "SELECT * FROM purchase_list WHERE user_id='$id' ORDER BY purchase_id DESC");
                         if(mysqli_num_rows($select_product) > 0){
                            while( $fetch_purchase = mysqli_fetch_assoc($select_product)){
                             $p_id= $fetch_purchase['purchase_id'];

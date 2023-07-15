@@ -1,5 +1,5 @@
 
-<a href="#" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
+<a href="admin_dashboard.php" class="brand"><i class='bx bxs-smile icon'></i> AdminSite</a>
 		<ul class="side-menu">
 			<li><a href="admin_dashboard.php" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li>
@@ -9,11 +9,11 @@
 				<a href="manageproduct.php"><i class='bx bxs-doughnut-chart icon' ></i> Product</a>
 			</li>
 			<li>
-				<a href="#"><i class='bx bxs-chart icon' ></i> Sales </a>
+				<a href="sales.php"><i class='bx bxs-chart icon' ></i> Sales </a>
 			</li>
 			<li><a href="#"><i class='bx bx-table icon' ></i> Report </a></li>
 			<li class="divider"></li>
-			<li><a href="#"><i class='bx bxs-cog icon' ></i> Settings </a></li>
+			<li><a href="#"><i class='bx bxs-cog icon' ></i> Profile </a></li>
 			<li><a href="logout.php"><i class='bx bxs-log-out-circle icon' ></i> Logout </a></li>
 		</ul>
 

@@ -85,6 +85,57 @@ $id = $_SESSION['user_id'];
 			</div>
 		</div>
 	</div>
+	<div class="data">
+		<div class="content-data">
+			<div class="head">
+				<h3>Sales Report</h3>
+			</div>
+			<div class="chart">
+				<div id="chart"></div>
+			</div>
+		</div>
+		<div class="content-data">
+			<div class="head">
+				<h3>Recent Orders</h3>
+			</div>
+			<div class="table">
+            <section class="table_body">
+                <table >
+                    <?php
+                        include 'includes/connection.php';
+
+                    ?>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Product Added</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+					<?php
+                        $select_product = mysqli_query($con, "SELECT * FROM purchase_list  ORDER BY purchase_date DESC LIMIT 7");
+                        if(mysqli_num_rows($select_product) > 0){
+                           while( $fetch_purchase = mysqli_fetch_assoc($select_product)){
+                            $p_id= $fetch_purchase['purchase_id'];
+                           
+                        ?>
+                        <tr>
+                            <td><?php  echo $fetch_purchase['product_name']?></td>
+                            <td><?php  echo $fetch_purchase['product_quantity'] ?></td>
+                            <td><?php echo $fetch_purchase['purchase_date'] ?></td>
+                            
+                        </tr>
+                        <?php
+                           }
+                        }
+                        
+                    ?>
+                    </tbody>
+                </table>
+            </section>
+		</div>
+	</div>
   </main>
   <!-- Main Content -->
 

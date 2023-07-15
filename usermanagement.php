@@ -87,7 +87,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $query = "SELECT * FROM users";
+                            $query = "SELECT * FROM users WHERE user_type='1'";
                             $result = mysqli_query($con,$query);
                             
                             while($row= mysqli_fetch_array($result)){
@@ -104,10 +104,9 @@
                                             }
                                             else{echo "Admin";} 
                                 ?></td>
-                                <!-- <td><a href="./update.php?id=<?php echo $id; ?>"><i class='bx bx-edit' style="font-size:25px;color:green;"></i></a></td> -->
                                 <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteuser.php?id=<?php echo $id; ?>"><i class='bx bxs-message-square-x' style="font-size:25px;color:red;"></i></a></td>
                             </tr>
-                    <?php
+                        <?php
                     }
                     ?>
                     </tbody>
