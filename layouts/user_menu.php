@@ -5,19 +5,8 @@
 			<li>
 				<a href="userproduct.php"><i class='bx bxs-doughnut-chart icon' ></i> Product</a>
 			</li>
-			<!-- <li>
-				<a href="#"><i class='bx bxs-chart icon' ></i> Sales <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a href="#">By Weeks</a></li>
-					<li><a href="#">By Days</a></li>
-				</ul>
-			</li> -->
 			<li>
-				<a href="#"><i class='bx bxs-purchase-tag icon'></i> Purchase <i class='bx bx-chevron-right icon-right' ></i></a>
-				<!-- <ul class="side-dropdown">
-					<li><a href="#">Admin</a></li>
-					<li><a href="#">Customer</a></li>
-				</ul> -->
+				<a href="purchase_list.php"><i class='bx bxs-doughnut-chart icon' ></i> Order List</a>
 			</li>
 			<li><a href="#"><i class='bx bx-table icon' ></i> Report </a></li>
 			<li class="divider"></li>

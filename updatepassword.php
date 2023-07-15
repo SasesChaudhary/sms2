@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <?php
 
-    session_start();
-    // if(isset($_SESSION['username'])){
-    //     header('location:logout.php');
-    // }
-    include 'includes/connection.php';
-    $id = $_SESSION['id'];
-    $select = "SELECT * FROM users WHERE user_id='$id'";
-    $data=mysqli_query($con,$select);
+  session_start();
+  // if(isset($_SESSION['username'])){
+  //     header('location:logout.php');
+  // }
+  include 'includes/connection.php';
+  $id = $_SESSION['id'];
+  $select = "SELECT * FROM users WHERE user_id='$id'";
+  $data=mysqli_query($con,$select);
 
-    while($row= mysqli_fetch_array($data)){
-        $_SESSION['user_id'] = $row['user_id'];
-        $password = $row['password'];
-        $cpassword = $row['cpassword'];
+  while($row= mysqli_fetch_array($data)){
+      $_SESSION['user_id'] = $row['user_id'];
+      $password = $row['password'];
+      $cpassword = $row['cpassword'];
 
+  }
+  if(isset($_POST['login'])){
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
+    
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number = preg_match('@[0-9]@', $password);
+
+      //Password
+    if(strlen($password)<5){
+        $error= 'Password must be at least 5 characters';
     }
-    if(isset($_POST['login'])){
-        $password = $_POST['password'];
-        $cpassword = $_POST['cpassword'];
-        
-        $uppercase = preg_match('@[A-Z]@', $password);
-        $lowercase = preg_match('@[a-z]@', $password);
-        $number = preg_match('@[0-9]@', $password);
-
-         //Password
-        if(strlen($password)<5){
-            $error= 'Password must be at least 5 characters';
-        }
-        elseif(!$uppercase || !$lowercase || !$number ) {
-            $error = " Password must contain at least one number & one uppercase & lowercase letter";
-        }
-        //Confirm password
-        elseif($cpassword != $password){
-            $error ="Password doesnot match";
-        }
-        else{
-            //password encryption
-            // $password = md5($password);
-            // $cpassword = md5($cpassword);
-
-            $update = "UPDATE users SET password ='{$password}', cpassword='$cpassword' WHERE user_id='{$id}' ";
-            $query = mysqli_query($con,$update);
-
-            session_destroy();
-            header('location:login.php');
-        }
+    elseif(!$uppercase || !$lowercase || !$number ) {
+        $error = " Password must contain at least one number & one uppercase & lowercase letter";
     }
+    //Confirm password
+    elseif($cpassword != $password){
+        $error ="Password doesnot match";
+    }
+    else{
+      //password encryption
+      // $password = md5($password);
+      // $cpassword = md5($cpassword);
+
+      $update = "UPDATE users SET password ='{$password}', cpassword='$cpassword' WHERE user_id='{$id}' ";
+      $query = mysqli_query($con,$update);
+
+      session_destroy();
+      header('location:login.php');
+    }
+  }
 ?>
 <html lang="en">
 <head>

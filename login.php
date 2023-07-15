@@ -3,7 +3,7 @@
 <?php
 
 session_start();
-if(isset($_SESSION['loggedIn'])){
+if(isset($_SESSION['user_id'])){
   header('location:logout.php');
 }
 include 'includes/connection.php';
@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
     $_SESSION['user_type'] = $user_type;
     $_SESSION['user_id'] = $id;
     if($_SESSION['user_type'] == 1){
-      include 'layouts/user_menu.php';
+      header('location:user_dashboard.php');
     }
     else{
       header('location:admin_dashboard.php');

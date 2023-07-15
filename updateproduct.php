@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
 	session_start();
-    if(!isset($_SESSION['username'])){
+    if(!isset($_SESSION['user_id'])){
         header('location:login.php');
     }
 ?>
@@ -20,7 +20,7 @@
     $data=mysqli_query($con,$select);
 
     while($row= mysqli_fetch_array($data)){
-      $id = $row['product_id'];
+      // $id = $row['product_id'];
       $name = $row['product_name'];
       $bought = $row['product_bought'];
       $stock = $row['product_stock'];
@@ -87,18 +87,18 @@
                   <input type="text" name="name" class="field" value="<?php echo $name ;?>">
               </li>
               <li>
-                  <label>Image</label>
+                  <label>Product Image</label>
                   <img src="<?php echo "images/".$image; ?>"  height="70px" width="70px">
-                  <input type="file" name="image" class="field-img">
+                  <input type="file" name="image" class="field-img" value="<?php echo "images/".$image; ?>">
               </li>
               <li>
-                  <label>Rate </label>
-                  <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>">
+                  <label>Product Rate (R.S) </label>
+                  <input type="number" name="bought" class="field" value="<?php  echo $bought; ?>" min="0" oninput="this.value = Math.abs(this.value)">
               </li>
               <li>
               <li>
-                  <label>Quantity</label>
-                  <input type="number" name="stock" class="field" value="<?php  echo $stock; ?>">
+                  <label>Product Quantity</label>
+                  <input type="number" name="stock" class="field" value="<?php  echo $stock; ?>" min="0" oninput="this.value = Math.abs(this.value)">
               </li>
               <li>
                   <input type="submit" value="Update" name="update">

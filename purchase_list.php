@@ -16,7 +16,6 @@
 	<title>Stationery Management System</title>
 </head>
 <body>
-	<span class="overlay"></span>
     <!-- SIDEBAR -->
 <section id="sidebar"> 
     <?php 
@@ -53,23 +52,23 @@
                             <th>Product Image</th>
                             <th>Product Rate(R.s)</th>
                             <th>Product Quantity</th>
-                            <th>Add Order</th>
+                            <th>Ordered Date</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                        $select_product = mysqli_query($con, "SELECT * FROM product");
+                        $select_product = mysqli_query($con, "SELECT * FROM purchase_list WHERE user_id='$id'");
                         if(mysqli_num_rows($select_product) > 0){
-                           while( $fetch_product = mysqli_fetch_assoc($select_product)){
-                            $p_id= $fetch_product['product_id'];
+                           while( $fetch_purchase = mysqli_fetch_assoc($select_product)){
+                            $p_id= $fetch_purchase['purchase_id'];
                            
                         ?>
                         <tr>
-                            <td><?php  echo $fetch_product['product_name']?></td>
-                            <td><img src="<?php echo "images/".$fetch_product['product_image']; ?>" alt="image" width="100px" height="100px"></td>
-                            <td><?php  echo $fetch_product['product_bought'] ?></td>
-                            <td><?php  echo $fetch_product['product_stock'] ?></td>
-                            <td><a href="purchase.php?id=<?php echo $p_id; ?>"><i class='bx bx-cart' style="font-size:25px;color:black;"></i></a></td>
+                            <td><?php  echo $fetch_purchase['product_name']?></td>
+                            <td><img src="<?php echo "images/".$fetch_purchase['product_image']; ?>" alt="image" width="100px" height="100px"></td>
+                            <td><?php  echo $fetch_purchase['product_rate'] ?></td>
+                            <td><?php  echo $fetch_purchase['product_quantity'] ?></td>
+                            <td><?php echo $fetch_purchase['purchase_date'] ?></td>
                             
                         </tr>
                         <?php

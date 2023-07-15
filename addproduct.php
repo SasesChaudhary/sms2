@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 		session_start();
-  if(!isset($_SESSION['username'])){
+  if(!isset($_SESSION['user_id'])){
     header('location:login.php');
   }
 	include 'includes/connection.php';
@@ -23,8 +23,28 @@
     if(in_array($img_type, $allow_type)){//checks image extension
       if($imagesize <= 2000000){//checks image size
         move_uploaded_file($tmpname, $destination);//moves the image to project image folder
+
+        //checking if product is already on database
+        $select = "SELECT * FROM product WHERE product_name = '$name' ";
+        $data=mysqli_query($con,$select);
+      
+        while($row= mysqli_fetch_array($data)){
+          $p_id = $row['product_id'];
+          $p_name = $row['product_name'];
+          $p_quantity = $row['product_stock'];
+        }
+        if(mysqli_num_rows($data) > 0){
+          $quantity = $p_quantity + $stock;
+          $product_quantity = "UPDATE product SET product_stock='$quantity' WHERE product_name='$name' && product_image='$imagename' && product_bought='$bought'";
+          $product_query = mysqli_query($con, $product_quantity);
+          header('location:manageproduct.php');
+        }
+
+        else{
           $insertquery = "INSERT INTO product(product_name, product_bought, product_stock, product_image) VALUES('{$name}','{$bought}','{$stock}','$imagename')";
           $query = mysqli_query($con,$insertquery);
+          header('location:manageproduct.php');
+        }
       }
       else{
         $error="Size exceded";
@@ -76,16 +96,16 @@
                     <input type="text" name="name" class="field">
                 </li>
                 <li>
-                    <label>Image</label>
+                    <label>Product Image</label>
                     <input type="file" name="image" class="field-long">
                 </li>
                 <li>
-                    <label>Rate </label>
-                    <input type="number" name="bought" class="field">
+                    <label>Product Rate (R.S)</label>
+                    <input type="number" name="bought" class="field" min="0" oninput="this.value = Math.abs(this.value)">
                 </li>
                 <li>
-                    <label>Quantity</label>
-                    <input type="number" name="stock" class="field">
+                    <label>Product Quantity</label>
+                    <input type="number" name="stock" class="field" min="0" oninput="this.value = Math.abs(this.value)">
                 </li>
                 <li>
                     <input type="submit" value="Add" name="add">

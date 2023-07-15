@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['user_id'])){
 	header('location:login.php');
 }
 include './includes/connection.php';
@@ -59,6 +59,10 @@ $id = $_SESSION['user_id'];
 						$check_product = "SELECT * FROM product ";
 						$query_product = mysqli_query($con,$check_product);
 						$row_product = mysqli_num_rows($query_product);
+
+						$check_sales = "SELECT * FROM purchase_list ";
+						$query_sales = mysqli_query($con,$check_sales);
+						$row_sales = mysqli_num_rows($query_sales);
 					?>
 					<p><?php echo $row_product;?></p>
 				</div>
@@ -69,7 +73,7 @@ $id = $_SESSION['user_id'];
 			<div class="head">
 				<div>
 					<h2>Sales</h2>
-					<p>1</p>
+					<p><?php echo $row_sales;?></p>
 				</div>
 				<i class='bx bxs-chart icon' style="color:purple;"></i>
 			</div>
