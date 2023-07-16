@@ -3,7 +3,7 @@
 
 session_start();
 if(isset($_SESSION['username'])){
-  header('location:logout.php');
+  header('location:user_dashboard.php');
 }
 include 'includes/connection.php';
 if(isset($_POST['login'])){

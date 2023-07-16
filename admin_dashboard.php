@@ -21,7 +21,7 @@ $id = $_SESSION['user_id'];
 	<section id="sidebar"> 
 		<?php 
 			if($_SESSION['user_type'] == 1){
-				include 'layouts/user_menu.php';
+				header('location:user_dashboard.php');
 			}
 			else{
 				include 'layouts/admin_menu.php';

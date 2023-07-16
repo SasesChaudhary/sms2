@@ -4,7 +4,7 @@
 
 session_start();
 if(isset($_SESSION['user_id'])){
-  header('location:logout.php');
+  header('location:user_dashboard.php');
 }
 include 'includes/connection.php';
 if(isset($_POST['login'])){
@@ -69,7 +69,7 @@ if(isset($_POST['login'])){
       </div>
       <div class="row">
         <i class="fas fa-lock"></i>
-        <!-- <i class="fa fa-eye"  id="eye"   onclick="pass()"></i> -->
+        <i class="fa fa-eye"  id="eye"   onclick="pass()"></i>
         <input type="password" placeholder="Password" name="password" id="password">
       </div>
       <div class="row button">
@@ -80,20 +80,6 @@ if(isset($_POST['login'])){
     </form>
   </div>
 </div>
-<!-- <script>
-  var a=true;
-  function pass(){
-    if(a){
-      document.getElementById('password').setAttribute("type'","password");
-      // document.getElementById('eye').style.color='black';
-      a=true;
-    }
-    else{
-      document.getElementById('password').setAttribute("type'","text");
-      document.getElementById('eye').style.color='blue';
-      a=false;
-    }
-  }
-</script> -->
+<script src="./assets/js/main.js"></script>
 </body>
 </html>

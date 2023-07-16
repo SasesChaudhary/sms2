@@ -24,7 +24,7 @@ $id = $_SESSION['user_id'];
 				include 'layouts/user_menu.php';
 			}
 			else{
-				include 'layouts/admin_menu.php';
+				header( 'location:admin_dashboard.php');
 			}
 		?>
 

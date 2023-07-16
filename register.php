@@ -2,7 +2,7 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
-  header('location:logout.php');
+  header('location:user_dashboard.php');
 }
 require_once "./includes/connection.php";
 if (isset($_POST['submit'])) {
@@ -96,13 +96,13 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="row">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" name="password" value="<?php if(isset($error)){ echo $password; }?>">
-          <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
+          <i class="fa fa-eye"  id="eye"   onclick="pass()"></i>
+          <input type="password" placeholder="Password" name="password" value="<?php if(isset($error)){ echo $password; }?>" id="password">
         </div>
         <div class="row">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php if(isset($error)){ echo $cpassword; } ?>">
-          <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
+          <i class="fa fa-eye"  id="eye"   onclick="cpass()"></i>
+          <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php if(isset($error)){ echo $cpassword; } ?>" id="cpassword">
         </div>
           <div class="row button">
             <input type="submit" value="Register" name="submit">
@@ -111,5 +111,6 @@ if (isset($_POST['submit'])) {
         </form>
       </div>
     </div>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
