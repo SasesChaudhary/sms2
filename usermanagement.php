@@ -46,6 +46,8 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/add.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
 	<title>Stationery Management System</title>
 </head>
 <body>
@@ -72,14 +74,14 @@
     <div class="content">
         <div class="table">
             <section class="table_body">
-                <table>
+                <table id="table" class="display" style="width:100%">
                     <?php
                         include 'includes/connection.php';
 
                     ?>
                     <thead>
                         <tr>
-                            <th>UserName</th>
+                            <th>User Name</th>
                             <th>Email</th>
                             <th>User Type</th>
                             <th>Action</th>
@@ -119,6 +121,11 @@
 </section>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="assets\js\dashboard.js"></script>
-    <!-- <script src="assets\js\modal.js"></script> -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#table').DataTable();
+        });
+    </script>
 </body>
 </html>    

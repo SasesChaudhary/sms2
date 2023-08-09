@@ -26,8 +26,11 @@
             <i class='bx bx-menu toggle-sidebar' ></i>
             <form action="#">
                 <div class="form-group">
-                    <input type="text" placeholder="Search...">
-                    <i class='bx bx-search icon' ></i>
+                    <div class="date">
+                        <?php
+                            echo date('d-m-y , l');
+                        ?>
+                    </div>
                 </div>
             </form>
             <span class="divider"></span>
