@@ -11,7 +11,7 @@ if(isset($_POST['login'])){
     $email = $_POST['email'];
   
     //checking of emial and password in database
-    $check = "SELECT * FROM users WHERE username='$username' && email = '$email' ";
+    $check = "SELECT * FROM users WHERE username='$username'  ";
     $query = mysqli_query($con,$check);
     $row = mysqli_num_rows($query);
   
@@ -57,7 +57,7 @@ if(isset($_POST['login'])){
             <input type="text" placeholder="Email" name="email">
           </div>
           <div class="row button">
-            <input type="submit" value="Submit" name="login" id="">
+            <input type="submit" value="Submit" name="login" >
           </div>
           <div class="signup-link">Already have an account? <a href="login.php">Login now</a></div>
         </form>
