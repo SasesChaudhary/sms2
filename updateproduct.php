@@ -31,8 +31,16 @@
         $name = $_POST['name'];
         $bought = $_POST['bought'];
         $stock = $_POST['stock'];
+        $old_image = $_POST['image_old'];
   
-        $imagename = $_FILES['image']['name'];
+        $new_image = $_FILES['image']['name'];
+
+        if($new_image != ""){
+          $imagename = $_FILES['image']['name'];
+        }
+        else{
+          $imagename = $old_image;
+        }
         $tmpname = $_FILES['image']['tmp_name'];
         $img_type = strtolower(pathinfo($imagename,PATHINFO_EXTENSION));//gets extension of the image
         $destination = "./images/".$imagename;//Saves image
@@ -54,7 +62,7 @@
           }
         }
         else{
-          $error="file type Not allowed";
+          $error="File type not allowed";
         }
       }
 ?>
@@ -89,7 +97,8 @@
               <li>
                   <label>Product Image</label>
                   <img src="<?php echo "images/".$image; ?>"  height="70px" width="70px">
-                  <input type="file" name="image" class="field-img" value="<?php echo "images/".$image; ?>">
+                  <input type="file" name="image" class="field-img" ">
+                  <input type="hidden" name="image_old" class="field-img" value="<?php echo "images/".$image; ?>">
               </li>
               <li>
                   <label>Product Rate (R.S) </label>

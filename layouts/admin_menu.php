@@ -11,7 +11,7 @@
 			<li>
 				<a href="sales.php"><i class='bx bxs-chart icon' ></i> Sales </a>
 			</li>
-			<li><a href="#"><i class='bx bx-table icon' ></i> Report </a></li>
+			<li><a href="salesreport.php"><i class='bx bx-table icon' ></i> Report </a></li>
 			<li class="divider"></li>
 			<li><a href="profile.php"><i class='bx bxs-cog icon' ></i> Profile </a></li>
 			<li><a href="logout.php"><i class='bx bxs-log-out-circle icon' ></i> Logout </a></li>

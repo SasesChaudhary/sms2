@@ -20,3 +20,124 @@ Login and logout system(6/7/2023)
 Dashboard (6/8/2023)
 Frontend
 1. https://www.youtube.com/watch?v=m3aC6t_9RK8&t=300s    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<?php 
+	session_start();
+    if(!isset($_SESSION['user_id'])){
+        header('location:login.php');
+    }
+
+    if(isset($_GET['generate'])){
+        $from=$_GET['from'];
+        $to=$_GET['to'];
+
+        include 'includes/connection.php';
+
+        $query = "SELECT * from purchase_list where purchase_date between '$from' and '$to'";
+        $query_run = mysqli_query($con, $query);
+        if(mysqli_num_rows($query_run) > 0){
+            $_SESSION['from']=$from;
+            $_SESSION['to']=$to;
+            header('location:generatepdf.php');
+        }
+        else{
+            $error="No records found";
+        }
+    }
+?>
+<html lang="en">
+<head>
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="assets/css/add.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<title>Stationery Management System</title>
+</head>
+<body>
+    <!-- SIDEBAR -->
+	<section id="sidebar"> 
+		<?php 
+			if($_SESSION['user_type'] == 1){
+				include 'layouts/user_menu.php';
+			}
+			else{
+				include 'layouts/admin_menu.php';
+			}
+		?>
+    <main >
+    <h1 class="title">Sales Report</h1>
+    <ul class="breadcrumbs">
+        <li><a href="admin_dashboard.php">Home</a></li>
+        <li class="divider">/</li>
+        <li><a href="product.php" class="active">Report</a></li>
+    </ul>
+  <div class="add-form">
+      <div class="form-container">
+        <form action="" method="GET">
+        <div class="title">Generate Report </div>
+          <p style="color: red;text-align:center;"> <?php if(isset($error)){ echo $error; }?></p>
+            <ul class="form-style">
+              <li>
+                  <label>Start Date</label>
+                  <input type="date" name="from" class="field">
+              </li>
+              <li>
+                  <label>End Date</label>
+                  <input type="date" name="to" class="field">
+              </li>
+              <li style="margin-bottom:5px;">
+                  <input type="submit" value="Generate" name="generate">
+              </li>
+          </ul>
+        </form>
+      </div>
+  </div>
+  <div class="content">
+        <div class="table">
+            <section class="table_body">
+                <table id="table" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Product Rate(R.s)</th>
+                            <th>Product Quantity</th>
+                            <th>Add Order</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+  </main>
+  <!-- Main Content -->
+
+
+  </section>
+    <script src="assets\js\dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#table').DataTable();
+        });
+    </script>
+</body>
+</html>

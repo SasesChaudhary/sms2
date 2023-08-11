@@ -10,7 +10,6 @@
     <li>
         <a href="purchase_list.php"><i class='bx bxs-doughnut-chart icon'></i> Order List</a>
     </li>
-    <li><a href="#"><i class='bx bx-table icon'></i> Report </a></li>
     <li class="divider"></li>
     <li><a href="profile.php"><i class='bx bxs-cog icon'></i> Profile </a></li>
     <li><a href="logout.php"><i class='bx bxs-log-out-circle icon'></i> Logout </a></li>

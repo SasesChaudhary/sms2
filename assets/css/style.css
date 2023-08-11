@@ -365,7 +365,7 @@ main .table{
 	height: 67vh;
 	overflow: hidden;
 }
-/* .modal{
+.modal{
 	margin: 0 10px 0 10px;
 }
 .modal__button{
@@ -381,7 +381,7 @@ main .table{
 .modal__button a{
 	text-decoration: none;
 	color: white;
-} */
+}
 /* Table */
 main .content .table_header{
 	width: 100%;
