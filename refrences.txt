@@ -20,24 +20,3 @@ Login and logout system(6/7/2023)
 Dashboard (6/8/2023)
 Frontend
 1. https://www.youtube.com/watch?v=m3aC6t_9RK8&t=300s    
-
-
-
-
-
-<?php
-      // $select = "SELECT * FROM product";
-      // $q = mysqli_query($con, $select);
-      // while($fetch=mysqli_fetch_array(($q))){
-      //   ?>
-      //   <img src="images/<?php echo $fetch['product_image']; ?>" width="100px">
-      //   <?php
-      // }
-?>
-
-
-window.open("location","_self");
-
-
-           $filename1 = $filename.date('sidmY').".".$img_type;//adds date in the picture
-      $filename2 = preg_replace('/\s+/','',$filename1);//removes white spaces

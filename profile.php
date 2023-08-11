@@ -77,7 +77,7 @@ if(isset($_POST['general'])){
     <main>
         <section>
 
-            <h3 class="mb-4">Account Settings</h3>
+            <h3 class="m-4">Account Settings</h3>
             <div class="container">
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex">
                     <div class="profile-tab-nav border-right">

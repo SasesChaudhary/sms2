@@ -51,7 +51,7 @@ if(isset($_POST['login'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/form.css">
 </head>
-<body>
+<body style="background-image:url(assets/images/login.jpg);background-repeat:no-repeat;background-size:cover;height:100vh;width:100%;">
 <div class="container">
   <div class="form-container">
     <div class="title"><span>Login</span></div>

@@ -48,12 +48,12 @@ if (isset($_POST['login'])) {
 <html lang="en">
 
 <head>
-  <title>Login</title>
+  <title>Update Password</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/form.css">
 </head>
 
-<body>
+<body style="background-image:url(assets/images/update.jpg);background-repeat:no-repeat;background-position:center;background-size:cover;height:100vh;width:100%;">
   <div class="container">
     <div class="form-container">
       <div class="title"><span>Update Password</span></div>
