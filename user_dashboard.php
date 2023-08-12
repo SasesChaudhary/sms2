@@ -61,14 +61,14 @@ $id = $_SESSION['user_id'];
 		</div>
 	</div>
 	<div class="data">
-		<div class="content-data">
+		<!-- <div class="content-data">
 			<div class="head">
 				<h3>Sales Report</h3>
 			</div>
 			<div class="chart">
 				<div id="chart"></div>
 			</div>
-		</div>
+		</div> -->
 		<div class="content-data">
 			<div class="head">
 				<h3>Recent Orders</h3>
