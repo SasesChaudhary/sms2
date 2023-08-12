@@ -55,12 +55,22 @@ li {
 #sidebar.hide:hover {
 	max-width: 260px;
 }
+#sidebar .brand .logo{
+	display: flex;
+	align-items: center;
+	height:50px;
+	color: var(--blue);
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
 #sidebar .brand {
-	font-size: 24px;
+	font-size: 19px;
 	display: flex;
 	align-items: center;
 	height: 64px;
-	font-weight: 700;
+	font-weight: 600;
 	color: var(--blue);
 	position: sticky;
 	top: 0;

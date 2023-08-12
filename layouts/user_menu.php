@@ -1,7 +1,5 @@
 
-
-
-<a href="user_dashboard.php" class="brand"><i class='bx bxs-smile icon'></i> UserSite</a>
+<a href="user_dashboard.php" class="brand"><img alt="logo" class="logo" src="assets/images/logo.png"><img alt="logo" class="logo" src="assets/images/brand.png"></a>
 <ul class="side-menu">
     <li><a href="user_dashboard.php" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard</a></li>
     <li>
