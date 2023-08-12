@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2023 at 03:40 AM
+-- Generation Time: Aug 12, 2023 at 05:09 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -41,9 +41,34 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_bought`, `product_stock`, `product_image`, `product_add_date`) VALUES
-(26, 'Sharpner', 1, 1, 'viber_image_2022-09-06_19-31-48-069.jpg', '2023-07-13'),
-(27, 'Eraser', 112, 12, 'h.png', '2023-07-13'),
-(30, 'Pencil', 12, 14, 'viber_image_2022-09-06_19-31-48-069.jpg', '2023-07-13');
+(26, 'Sharpner', 1, 0, 'viber_image_2022-09-06_19-31-48-069.jpg', '2023-07-13'),
+(27, 'Eraser', 112, 4, 'update.jpg', '2023-07-13'),
+(30, 'Pencil', 12, 13, 'viber_image_2022-09-06_19-31-48-069.jpg', '2023-07-13'),
+(31, 'Scale', 15, 1000, 'user.png', '2023-08-11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase_list`
+--
+
+CREATE TABLE `purchase_list` (
+  `purchase_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_name` varchar(50) NOT NULL,
+  `product_image` varchar(255) NOT NULL,
+  `product_rate` varchar(255) NOT NULL,
+  `product_quantity` varchar(110) NOT NULL,
+  `purchase_date` date DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `purchase_list`
+--
+
+INSERT INTO `purchase_list` (`purchase_id`, `user_id`, `product_name`, `product_image`, `product_rate`, `product_quantity`, `purchase_date`) VALUES
+(2, 2, 'Eraser', 'h.png', '112', '2', '2023-08-09'),
+(3, 22, 'Pencil', 'viber_image_2022-09-06_19-31-48-069.jpg', '12', '1', '2023-08-11');
 
 -- --------------------------------------------------------
 
@@ -67,7 +92,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `cpassword`, `user_type`) VALUES
 (1, 'admin', 'admin@admin.admin', 'admin1', 'admin1', 2),
 (2, 'User', 'user@user.user', 'user12', 'user12', 1),
-(22, 'Niraj', 'niraj@gmail.com', 'Ch@no1', 'Ch@no1', 1);
+(22, 'Niraj', 'niraj@gmail.com', 'Ch@no12', 'Ch@no12', 1);
 
 --
 -- Indexes for dumped tables
@@ -78,6 +103,12 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `cpassword`, `u
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `purchase_list`
+--
+ALTER TABLE `purchase_list`
+  ADD PRIMARY KEY (`purchase_id`);
 
 --
 -- Indexes for table `users`
@@ -93,7 +124,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `purchase_list`
+--
+ALTER TABLE `purchase_list`
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
