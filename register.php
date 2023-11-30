@@ -44,35 +44,34 @@ if (isset($_POST['submit'])) {
     $error ="Password doesnot match";
   }
   else{
+    // Check if email already exists
     $emailquery = "SELECT * FROM users WHERE email = '{$email}'";
-    $query = mysqli_query($con,$emailquery);
-
+    $query = mysqli_query($con, $emailquery);
     $emailcount = mysqli_num_rows($query);
 
     if($emailcount > 0){
-      $error = "Email already exist";
+      $error = "Email already exists";
       header('location:register.php');
-
     }
     else{
+      // Hash the password
+      $hashed_password = md5($password);
 
-      //password encryption
-      // $password = md5($password);
-      // $cpassword = md5($cpassword);
+      // Insert user data into the database
+      $insertquery = "INSERT INTO users (username, email, password, cpassword, user_type) VALUES('{$username}','{$email}','{$hashed_password}','{$hashed_password}','{$type}')";
+      $iquery = mysqli_query($con, $insertquery);
 
-      //insert into database
-      $insertquery = "INSERT INTO users (username, email, password, cpassword, user_type) VALUES('{$username}','{$email}','{$password}','{$cpassword}','{$type}')";
-      $iquery = mysqli_query($con,$insertquery);
+      // Redirect to login page if registration is successful
       if($iquery){
         header('location:login.php');
       }
       else{
         header('location:register.php');
-
       }
     }
   }
-  }
+}
+
 ?>
 <html lang="en">
 <head>

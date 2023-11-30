@@ -11,7 +11,7 @@ if(isset($_POST['login'])){
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  // $password = md5($password);
+  $password = md5($password);
 
   //checking of emial and password in database
   $check = "SELECT * FROM users WHERE email = '$email' && password='$password'";

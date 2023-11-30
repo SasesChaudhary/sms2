@@ -31,7 +31,7 @@
         $number = preg_match('@[0-9]@', $password);
 
         //Password
-        if($pass != $opass){
+        if($pass != md5($opass)){
             $error = 'Old password is incorrect';
 
         }
@@ -43,13 +43,13 @@
             }
             //Confirm password
             elseif ($cpass != $password) {
-                $error = "Password doesnot match";
+                $error = "New password and Confrim Password doesn't match";
             } else {
                 //password encryption
-                // $password = md5($password);
-                // $cpassword = md5($cpassword);
+                $password = md5($password);
+                $cpassword = md5($cpassword);
 
-                $update = "UPDATE users SET password ='{$password}', cpassword='$cpass' WHERE user_id='{$id}' ";
+                $update = "UPDATE users SET password ='{$password}', cpassword='$cpassword' WHERE user_id='{$id}' ";
                 $query = mysqli_query($con, $update);
                 if($query){
                     header('location:profile.php');
@@ -83,8 +83,7 @@
     ?>
     <main>
         <section>
-
-            <h3 class="mb-4">Account Settings</h3>
+            <h3 class="m-4">Account Settings</h3>
             <div class="container">
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex">
                     <div class="profile-tab-nav border-right">

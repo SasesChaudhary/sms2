@@ -33,9 +33,9 @@ if (isset($_POST['login'])) {
   elseif ($cpassword != $password) {
     $error = "Password doesnot match";
   } else {
-    //password encryption
-    // $password = md5($password);
-    // $cpassword = md5($cpassword);
+    // password encryption
+    $password = md5($password);
+    $cpassword = md5($cpassword);
 
     $update = "UPDATE users SET password ='{$password}', cpassword='$cpassword' WHERE user_id='{$id}' ";
     $query = mysqli_query($con, $update);

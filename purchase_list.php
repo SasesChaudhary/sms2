@@ -6,7 +6,7 @@
     }
 	include 'includes/connection.php';
     $id = $_SESSION['user_id'];
-    // $sucess = $_SESSION['sucess'];
+    $sucess = $_SESSION['sucess'];
 ?>
 <html lang="en">
 <head>
@@ -32,7 +32,6 @@
         if(mysqli_num_rows($select_user) > 0){
             $fetch_user = mysqli_fetch_assoc($select_user);
         }
-        // echo $id;
     ?>
 <!-- Main Content -->
 <main >
@@ -42,7 +41,6 @@
         <li class="divider">/</li>
         <li><a href="userproduct.php" class="active">Product</a></li>
     </ul>
-    <!-- <p><?php if(isset($sucess)){echo $sucess;}?></p> -->
     <div class="content">
         <div class="table">
             <section class="table_body">
@@ -54,6 +52,7 @@
                             <th>Product Rate(R.s)</th>
                             <th>Product Quantity</th>
                             <th>Ordered Date</th>
+                            <!-- <th >Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +69,7 @@
                             <td><?php  echo $fetch_purchase['product_rate'] ?></td>
                             <td><?php  echo $fetch_purchase['product_quantity'] ?></td>
                             <td><?php echo $fetch_purchase['purchase_date'] ?></td>
-                            
+                            <!-- <td><a onclick="return confirm('Are you sure you want to delete?')" href="./deleteuserproduct.php?id=<?php echo $p_id; ?>"><i class='bx bxs-message-square-x' style="font-size:25px;color:red;"></i></a></td> -->
                         </tr>
                         <?php
                            }

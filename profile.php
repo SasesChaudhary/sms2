@@ -15,7 +15,7 @@
       while($row= mysqli_fetch_array($query)){
         $id = $row['user_id'];
         $username = $row['username'];
-        $email = $row['email'];
+        $_SESSION['email'] = $row['email'];
         $pass = $row['password'];
       }
     } 
@@ -82,7 +82,7 @@ if(isset($_POST['general'])){
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex">
                     <div class="profile-tab-nav border-right">
                         <div class="p-2">
-                            <h4 class="text-center"><?php  echo $username;?></h4>
+                            <h4 class="text-center"><?php  echo $_SESSION['username'];?></h4>
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="account-tab" data-toggle="pill" href="profile.php" role="tab" aria-controls="account" aria-selected="true">
@@ -105,14 +105,14 @@ if(isset($_POST['general'])){
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>User Name</label>
-                                        <input type="text" class="form-control" value="<?php  echo $username;?>" name="username">
+                                        <input type="text" class="form-control" value="<?php  echo $_SESSION['username'];?>" name="username">
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" class="form-control" value="<?php echo $email; ?>" name="email">
+                                        <input type="text" class="form-control" value="<?php echo $_SESSION['email']; ?>" name="email">
                                     </div>
                                 </div>
                             </div>
@@ -129,4 +129,4 @@ if(isset($_POST['general'])){
 </section>
 <script src="assets\js\dashboard.js"></script>
 </body>
-</html>    
+</html>   

@@ -23,12 +23,6 @@ if(isset($_POST['purchase'])){
     $quantity = $_POST['quantity'];
     $rate = $_POST['rate'];
 
-    // $select_cart = mysqli_query($con, "SELECT * FROM purchase_list WHERE product_name='$name' && user_id='$id'");
-
-    // if(mysqli_num_rows($select_cart) > 0){
-    //     $error = 'Product has already been added';
-    // }
-    // else{
         if(($quantity > $stock) || ($quantity <= 0)){
             $error = 'Unable to purchase';
         }
@@ -50,7 +44,7 @@ if(isset($_POST['purchase'])){
                 $error = "Your order did not go through";
             }
         }
-//     }
+
 }
 ?>
 <html lang="en">
@@ -81,11 +75,7 @@ if(isset($_POST['purchase'])){
         <li class="divider">/</li>
         <li><a href="user_dashboard.php" class="active">dashboard</a></li>
     </ul>
-	<?php
-    // echo $id;
-    echo $p_id;
- 
-    ?>
+
     <div class="add-form">
       <div class="form-container">
         <form action="" method="POST" enctype="multipart/form-data">
